@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title }}</title>
+  <!-- Tailwind via CDN for quick dev -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/style.css" />
+
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-semibold text-slate-800">{{ title }}</h1>
+      <p class="text-sm text-slate-600">Simple IoT devices dashboard (Tailwind CDN)</p>
+    </header>
+
+    <section id="devices" class="grid gap-4"></section>
+
+    <template id="device-tpl">
+      <div class="bg-white shadow rounded p-4 flex justify-between items-center">
+        <div>
+          <div class="text-lg font-medium" data-name></div>
+          <div class="text-sm text-slate-500" data-id></div>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div class="text-sm px-3 py-1 rounded-full text-white" data-status></div>
+          <button class="send-command bg-blue-600 text-white px-3 py-1 rounded">Send CMD</button>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
