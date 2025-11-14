@@ -1,2 +1,23 @@
-body { font-family: Arial, sans-serif; padding: 2rem; background: #f7f7f7; }
-h1 { color: #222; }
+/* Additional custom styles */
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+.bg-white {
+  transition: box-shadow 0.3s ease;
+}
+
+.bg-white:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}

@@ -5,33 +5,70 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ title }}</title>
-  <!-- Tailwind via CDN for quick dev -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="/static/style.css" />
-
 </head>
 
 <body class="bg-slate-50 min-h-screen">
-  <div class="max-w-4xl mx-auto p-6">
-    <header class="mb-6">
-      <h1 class="text-3xl font-semibold text-slate-800">{{ title }}</h1>
-      <p class="text-sm text-slate-600">Simple IoT devices dashboard (Tailwind CDN)</p>
+  <div class="max-w-7xl mx-auto p-6">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-slate-800">{{ title }}</h1>
+      <p class="text-slate-600 mt-2">AI-Driven Solar Appliance Scheduling Dashboard</p>
+      <div id="connection-status" class="mt-2 text-sm">
+        <span class="inline-block w-2 h-2 rounded-full bg-gray-400 mr-2"></span>
+        <span>Connecting...</span>
+      </div>
     </header>
 
-    <section id="devices" class="grid gap-4"></section>
-
-    <template id="device-tpl">
-      <div class="bg-white shadow rounded p-4 flex justify-between items-center">
-        <div>
-          <div class="text-lg font-medium" data-name></div>
-          <div class="text-sm text-slate-500" data-id></div>
-        </div>
-        <div class="flex gap-2 items-center">
-          <div class="text-sm px-3 py-1 rounded-full text-white" data-status></div>
-          <button class="send-command bg-blue-600 text-white px-3 py-1 rounded">Send CMD</button>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <!-- Live Sensor Data -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">Live Sensor Data</h2>
+        <div id="sensor-data">
+          <div class="text-center text-slate-400 py-8">Waiting for data...</div>
         </div>
       </div>
-    </template>
+
+      <!-- Weather Information -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">Weather Info</h2>
+        <div id="weather-data">
+          <div class="text-center text-slate-400 py-8">Loading...</div>
+        </div>
+      </div>
+
+      <!-- Current Recommendation -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">Current Status</h2>
+        <div id="current-recommendation">
+          <div class="text-center text-slate-400 py-8">Calculating...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <!-- Sunlight Intensity Chart -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">Sunlight Intensity Trend</h2>
+        <canvas id="sunlightChart"></canvas>
+      </div>
+
+      <!-- 24-Hour Prediction Chart -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">24-Hour Optimal Usage Prediction</h2>
+        <canvas id="predictionChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Hourly Recommendations -->
+    <div class="bg-white shadow rounded-lg p-6">
+      <h2 class="text-xl font-semibold text-slate-800 mb-4">Hourly Recommendations</h2>
+      <div id="hourly-recommendations" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-2">
+        <!-- Will be populated by JS -->
+      </div>
+    </div>
   </div>
 
   <script src="/static/app.js"></script>

@@ -207,3 +207,41 @@ marimo/_lsp/
 __marimo__/
 
 task.md
+
+# Project Specific
+# Environment variables
+.env
+
+# Database files (generated at runtime)
+*.db
+*.sqlite
+*.sqlite3
+iot_data.db
+
+# ML Models and Training Data (generated at runtime)
+models/
+*.pkl
+*.npy
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Unnecessary/redundant docs
+docs/PROJECT_SUMMARY.md
+docs/QUICKSTART.md
+docs/DEPLOYMENT_CHECKLIST.md
+
+# Keep directory structure
+!models/.gitkeep
+!.env.example
